@@ -21,26 +21,25 @@ def linear_search_for_position_iterative(search_list, search_item):
     #TODO This is a more useful algorithm than the one that returns a boolean. Have a go. Write your own tests.
     pass
 
-def recursive_binary_search(search_list, search_item):
-    '''
-        Does a binary search and returns True if the item is found
-        Parameters: 
-        search_list (list): A sorted list of items
-        search_item (any): Object that you are looking for
-    
-        Returns: 
-        boolean: True if item found, else False
-    '''
-    #middle_index = TODO, but make sure it's an integer division (i.e. not just one slash)
+def binary_search_recursive(items, start_index, end_index, search_item):
+    if start_index > end_index:
+        return -1
+  # TODO use start_index and end_index to find out if the sublist is of size 0 or less and return appropriate int
+    if start_index>=end_index :
+        return ("Index is too small")
 
-    #TODO if search_list[middle_index] is the same as search_item return True
-
-    #TODO if the list has only 1 item return False
-
-    #TODO in one situation call recursive_binary_search(search_list[0:middle_index], search_item) 
-
-    #TODO otherwise recursive_binary_search(search_list[middle_index+1:], search_item)
-    pass
+  # TODO work out middle index of the sublist
+    middle_index = (start_index + end_index)
+  # TODO from that, set current item
+    current_item = items[middle_index]
+  # TODO base case 2: find out if current item is the search item and return the appropriate index
+    if current_item==search_item:
+        return middle_index
+  # recursive cases: do a BS on a subset of the list by tweaking appropriate start or end index
+    if current_item < search_item:
+        return binary_search_recursive(items, middle_index+1, end_index, search_item)
+    else:
+        return binary_search_recursive(items, middle_index-1, end_index, search_item)
 
 def binary_search(search_list, search_item):
     '''
